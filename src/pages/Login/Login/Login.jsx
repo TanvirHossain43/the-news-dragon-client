@@ -2,14 +2,17 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import useTitle from '../../../Hook/CustomHook';
 
 const Login = () => {
-    const { signInUser,loading } = useContext(AuthContext)
+    const { signInUser, loading } = useContext(AuthContext)
     const navigate = useNavigate();
 
     const location = useLocation()
+    useTitle('login')
+
     console.log('login page location', location)
-    
+
     const from = location.state?.from?.pathname || 'category/0'
 
     const handleLogIN = event => {
